@@ -38,3 +38,4 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
 	flags.DEFINE_integer('batch_size',100,'Batch Size')
 	# 引用的时候直接调用：
 	FLAGS.max_step
+
