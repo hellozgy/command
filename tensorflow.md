@@ -38,4 +38,12 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
 	flags.DEFINE_integer('batch_size',100,'Batch Size')
 	# 引用的时候直接调用：
 	FLAGS.max_step
-
+####4. cnn初始化
+	weights = tf.Variable(
+    tf.truncated_normal([IMAGE_PIXELS, hidden1_units],
+                        stddev=1.0 / math.sqrt(float(IMAGE_PIXELS))),
+    name='weights')
+	biases = tf.Variable(tf.zeros([hidden1_units]),
+                     name='biases')	
+- **tf.truncated_normal:**正态分布，超过均值两个标准差的值会重新选择（截断）,stddev参数是标准差，一般设置为1/sqrt(n)，其中n为输入层的size
+- b一般初始化为0
