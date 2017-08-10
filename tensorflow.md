@@ -141,3 +141,10 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
 	summary, _ = sess.run([merged, train_step], feed_dict=feed_dict(True))
     train_writer.add_summary(summary, step)
 可视化命令参照第7条。
+####9. 打印所有可训练变量
+	with tf.Session() as sess:
+    variables_names =[v.name for v in tf.trainable_variables()]
+    values = sess.run(variables_names)
+    for k,v in zip(variables_names, values):
+        print(k, v)
+
