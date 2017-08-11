@@ -47,13 +47,18 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
                      name='biases')	
 - **tf.truncated_normal:**正态分布，超过均值两个标准差的值会重新选择（截断）,stddev参数是标准差，一般设置为1/sqrt(n)，其中n为输入层的size
 - b一般初始化为0
-####5. 保存中间结果 Checkpoint
+####5. 保存中间结果 Checkpoint & 并重新加载
 	saver = tf.train.Saver()
 	...
+	# saver只会保存最新的5次保存结果
 	saver.save(sess, FLAGS.train_dir, global_step=step)
 
 	# reload in the future
-	saver.restore(sess, FLAGS.train_dir)
+	model = tf.train.get_checkpoint_state(FLAGS.model_dir)
+            if model and model.model_checkpoint_path:
+                print(model.model_checkpoint_path)
+                saver.restore(sess, model.model_checkpoint_path)
+	
 ####6. 打开log日志
 - tensorflow日志分5个依次严重的等级：debug,info,warn,error,fatal。tf默认是warn，
 可以通过下面的语句修改log等级。设置INFO后，tf.contrib.learn训练loss将会每隔100次打印结果。
@@ -147,4 +152,10 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
     values = sess.run(variables_names)
     for k,v in zip(variables_names, values):
         print(k, v)
+####10. 将稀疏矩阵转换为稠密矩阵
+	tf.sparse_tensor_to_dense(labels, default_value=-1)
+ 注：稀疏矩阵，比如indice=[[0,1],[1,2]],values=[10,32],
+意思就是，2*3矩阵[[0,10,0],[0,0,32]]，默认将稀疏部分补0.
+
+
 
