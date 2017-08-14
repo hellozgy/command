@@ -25,3 +25,8 @@
 ####3. 判断类型
 	t=[1,2]
 	print(isinstance(t, list))
+
+####4. 对字典排序
+	#按照values从大到小排序
+	for key, values in sorted(d.items(), key=lambda item:item[1]，reverse=True)
+		print('key:{}/value:{}'.format(key, value))
