@@ -156,6 +156,19 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
 	tf.sparse_tensor_to_dense(labels, default_value=-1)
  注：稀疏矩阵，比如indice=[[0,1],[1,2]],values=[10,32],
 意思就是，2*3矩阵[[0,10,0],[0,0,32]]，默认将稀疏部分补0.
+####11. tensorflow实现双向双层RNN
+# 双层双向RNN
+        fw_cell = bn_rnn.BNGRUCell(self.config.n_hidden, self.training_placeholder)
+        bw_cell = bn_rnn.BNGRUCell(self.config.n_hidden, self.training_placeholder)
+        fw_cell = tf.nn.rnn_cell.DropoutWrapper(cell=fw_cell, output_keep_prob=self.drop_out_placeholder)
+        bw_cell = tf.nn.rnn_cell.DropoutWrapper(cell=bw_cell, output_keep_prob=self.drop_out_placeholder)
+        fw_cells = tf.nn.rnn_cell.MultiRNNCell([fw_cell] * 2)
+        bw_cells = tf.nn.rnn_cell.MultiRNNCell([bw_cell] * 2 )
+
+        _, state = tf.nn.bidirectional_dynamic_rnn(fw_cells,bw_cells,inputs,sequence_length=self.seq_length_placeholder,dtype=tf.float32)
+        outputs = tf.concat((state[0][0], state[0][1], state[1][0], state[1][1]), 1)
+        outputs = tf.reshape(outputs, [self.config.batch_size, 4 * self.config.n_hidden])
+	
 
 
 

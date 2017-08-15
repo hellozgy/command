@@ -30,3 +30,10 @@
 	#按照values从大到小排序
 	for key, values in sorted(d.items(), key=lambda item:item[1]，reverse=True)
 		print('key:{}/value:{}'.format(key, value))
+####5. 遍历文件的两种方法
+
+	os.listdir(path)
+
+	for root, dirs, files in os.walk(path):
+		for file in files:
+			print(file)
