@@ -37,3 +37,8 @@
 	for root, dirs, files in os.walk(path):
 		for file in files:
 			print(file)
+####6. 删除文件和目录
+	import os
+	import shutil	
+	os.remove('D:/1.txt')
+	shutil.rmtree('D:/test/')
