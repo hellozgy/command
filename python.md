@@ -37,3 +37,10 @@
 	for root, dirs, files in os.walk(path):
 		for file in files:
 			print(file)
+####6. 排序
+	a=[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10),]  
+	sorted(a, key=lambda k:len(k[0]), reverse=True)
+####7. map函数
+	参数：map(func, *iterables)
+	将函数作用到每个可迭代元素上
+	类似的有filter函数，filter(func, *iterables)
