@@ -1,12 +1,16 @@
-#Tensorflow常用命令#
-
 ---
-####1. the difference####
+title: Tensorflow常用命令
+---
+
+#### 1. the difference
 - **sparse_softmax_cross_entropy_with_logits:** labels must have the shape [batch_size] and the dtype int32 or int64. Each label is an int in range [0, num_classes-1]
 - **softmax_cross_entropy_with_logits:** labels must have the shape [batch_size, num_classes] and dtype float32 or float64.
 	
 Labels used in softmax_cross_entropy_with_logits are the one hot version of labels used in sparse_softmax_cross_entropy_with_logits.
-####2. 配置tensorlfow
+
+<!--more-->
+
+#### 2. 配置tensorlfow
     config = tf.ConfigProto()
 	# 配置gpu资源随着需求增加，不设置会占用所有gpu资源
     config.gpu_options.allow_growth = True
@@ -28,7 +32,9 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
 
 - **allow_soft_placement:**If you would like TensorFlow to automatically choose an existing and supported device to run the operations in case the specified one doesn't exist, you can set allow_soft_placement to True in the configuration option when creating the session.
 - **log_device_placement:**To find out which devices your operations and tensors are assigned to, create the session with log_device_placement configuration option set to True
-####3. 配置超参数
+
+
+#### 3. 配置超参数
 	flags = tf.app.flags
 	FLAGS = flags.FLAGS
 	flags.DEFINE_float('learning_rate',1e-3,'Initial learning rate')
@@ -38,7 +44,8 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
 	flags.DEFINE_integer('batch_size',100,'Batch Size')
 	# 引用的时候直接调用：
 	FLAGS.max_step
-####4. cnn初始化
+	
+#### 4. cnn初始化
 	weights = tf.Variable(
     tf.truncated_normal([IMAGE_PIXELS, hidden1_units],
                         stddev=1.0 / math.sqrt(float(IMAGE_PIXELS))),
@@ -47,7 +54,8 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
                      name='biases')	
 - **tf.truncated_normal:**正态分布，超过均值两个标准差的值会重新选择（截断）,stddev参数是标准差，一般设置为1/sqrt(n)，其中n为输入层的size
 - b一般初始化为0
-####5. 保存中间结果 Checkpoint & 并重新加载
+
+#### 5. 保存中间结果 Checkpoint & 并重新加载
 	saver = tf.train.Saver()
 	...
 	# saver只会保存最新的5次保存结果
@@ -59,12 +67,13 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
                 print(model.model_checkpoint_path)
                 saver.restore(sess, model.model_checkpoint_path)
 	
-####6. 打开log日志
+#### 6. 打开log日志
 - tensorflow日志分5个依次严重的等级：debug,info,warn,error,fatal。tf默认是warn，
 可以通过下面的语句修改log等级。设置INFO后，tf.contrib.learn训练loss将会每隔100次打印结果。
 	
 		tf.logging.set_verbosity(tf.logging.INFO)
-####7. 日志监控 & early stopping
+		
+#### 7. 日志监控 & early stopping
 - 四种监视器
 
 	Monitor|Description
@@ -120,7 +129,7 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
 
 		tensorboard --logdir=./tmp/iris_model/ --host=127.0.0.1 --port=6006
 
-####8. 可视化tensor
+#### 8. 可视化tensor
 
 	def variable_summaries(var):
 	  """Attach a lot of summaries to a Tensor (for TensorBoard visualization)."""
@@ -146,17 +155,19 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
 	summary, _ = sess.run([merged, train_step], feed_dict=feed_dict(True))
     train_writer.add_summary(summary, step)
 可视化命令参照第7条。
-####9. 打印所有可训练变量
+
+#### 9. 打印所有可训练变量
 	with tf.Session() as sess:
     variables_names =[v.name for v in tf.trainable_variables()]
     values = sess.run(variables_names)
     for k,v in zip(variables_names, values):
         print(k, v)
-####10. 将稀疏矩阵转换为稠密矩阵
+		
+#### 10. 将稀疏矩阵转换为稠密矩阵
 	tf.sparse_tensor_to_dense(labels, default_value=-1)
  注：稀疏矩阵，比如indice=[[0,1],[1,2]],values=[10,32],
 意思就是，2*3矩阵[[0,10,0],[0,0,32]]，默认将稀疏部分补0.
-####11. tensorflow实现双向双层RNN
+#### 11. tensorflow实现双向双层RNN
 # 双层双向RNN
         fw_cell = bn_rnn.BNGRUCell(self.config.n_hidden, self.training_placeholder)
         bw_cell = bn_rnn.BNGRUCell(self.config.n_hidden, self.training_placeholder)

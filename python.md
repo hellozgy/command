@@ -1,43 +1,53 @@
-# python常用命令
-----
-####1. 使用argparse传递命令行参数
+---
+title: python常用命令
+---
+
+#### 1. 使用argparse传递命令行参数
 - 格式
+```
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument(
+'-v', '--version',
+type=float, default=0.2, help='the version')
+对于bool
+parser.add_argument('--feature', dest='feature', action='store_true')
+parser.add_argument('--no-feature', dest='feature', action='store_false')
+args = parser.parse_args()
+print(args.version)
+print(args.feature)
+```
 
-		import argparse
-		parser = argparse.ArgumentParser()
-		parser.add_argument(
-		'-v', '--version',
-		type=float, default=0.2, help='the version')
-		# 对于bool
-		parser.add_argument('--feature', dest='feature', action='store_true')
-     	parser.add_argument('--no-feature', dest='feature', action='store_false')
-		args = parser.parse_args()
-		print(args.version)
-		print(args.feature)
 - 调用
+```
+python test.py -v 0.3 --feature
+```
 
-		python test.py -v 0.3 --feature
-####2. 获取当前路径 
+<!--more-->
+		
+#### 2. 获取当前路径 
 	os.path.abspath('.')
 	#或者
 	os.system('pwd')
 
-####3. 判断类型
+#### 3. 判断类型
 	t=[1,2]
 	print(isinstance(t, list))
 
-####4. 对字典排序
+#### 4. 对字典排序
 	#按照values从大到小排序
 	for key, values in sorted(d.items(), key=lambda item:item[1]，reverse=True)
 		print('key:{}/value:{}'.format(key, value))
-####5. 遍历文件的两种方法
+		
+#### 5. 遍历文件的两种方法
 
 	os.listdir(path)
 
 	for root, dirs, files in os.walk(path):
 		for file in files:
 			print(file)
-####6. 删除文件和目录
+			
+#### 6. 删除文件和目录
 	import os
 	import shutil	
 	os.remove('D:/1.txt')
