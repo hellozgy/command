@@ -61,4 +61,8 @@ python test.py -v 0.3 --feature
 	import shutil	
 	os.remove('D:/1.txt')
 	shutil.rmtree('D:/test/')
->>>>>>> 0af418beb52494e03521a24f15b8fb1229779ac8
+
+#### 7. 随机数
+	import random
+	# 0-99之间随机取10个随机数
+	random.sample(range(100), 10)
