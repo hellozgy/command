@@ -52,3 +52,8 @@ python test.py -v 0.3 --feature
 	import shutil	
 	os.remove('D:/1.txt')
 	shutil.rmtree('D:/test/')
+
+#### 7. 正则表达式
+	import re
+	# 替换字符串:
+	re.sub('.*java', '', 'jfdlsjavafesd') # 返回fesd
