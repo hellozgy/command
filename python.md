@@ -40,36 +40,33 @@ python test.py -v 0.3 --feature
 		print('key:{}/value:{}'.format(key, value))
 		
 #### 5. 遍历文件的两种方法
-
 	os.listdir(path)
 
 	for root, dirs, files in os.walk(path):
 		for file in files:
 			print(file)
-<<<<<<< HEAD
-####6. 排序
+
+#### 6. 排序
 	a=[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10),]  
 	sorted(a, key=lambda k:len(k[0]), reverse=True)
-####7. map函数
+
+#### 7. map函数
 	参数：map(func, *iterables)
 	将函数作用到每个可迭代元素上
 	类似的有filter函数，filter(func, *iterables)
-=======
 			
-#### 6. 删除文件和目录
+#### 8. 删除文件和目录
 	import os
 	import shutil	
 	os.remove('D:/1.txt')
 	shutil.rmtree('D:/test/')
 
-<<<<<<< HEAD
-#### 7. 正则表达式
+#### 9. 正则表达式
 	import re
 	# 替换字符串:
 	re.sub('.*java', '', 'jfdlsjavafesd') # 返回fesd
-=======
-#### 7. 随机数
+
+#### 10. 随机数
 	import random
 	# 0-99之间随机取10个随机数
 	random.sample(range(100), 10)
->>>>>>> ef30bfa35e594acb3547cd160d6e99ddce1db448
