@@ -40,5 +40,7 @@ title: git常用命令
 		git log 
 		git reset --hard commit_id
 #### 6. git stash：清除更改
+#### 7. 删除远程文件
+	git rm -r --cached .idea/
 
 
