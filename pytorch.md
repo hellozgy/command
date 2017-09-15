@@ -34,5 +34,8 @@ title: pytorch常用命令
             nn.Linear(opt.linear_hidden_size,opt.num_classes)
         )
 
+#### 6. 添加一个维度
+![torch.unsqueeze(x, dim)](https://i.imgur.com/38Fm9nv.png)
+
 
 
