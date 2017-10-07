@@ -37,5 +37,18 @@ title: pytorch常用命令
 #### 6. 添加一个维度
 ![torch.unsqueeze(x, dim)](https://i.imgur.com/38Fm9nv.png)
 
+#### 7. 设置每行不同列的值为特定值
+	batch_size = 4
+	dim = 7
+	idx = torch.LongTensor([[0,1],[2,3],[0,4],[0,5]])
+	hot_vec = hot_v = torch.zeros(batch_size, dim)
+	hot_vec.scatter_(1, idx, 1.0)
+result
+
+    1     1     0     0     0     0     0
+    0     0     1     1     0     0     0
+    1     0     0     0     1     0     0
+    1     0     0     0     0     1     0
+
 
 

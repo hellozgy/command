@@ -42,5 +42,9 @@ title: git常用命令
 #### 6. git stash：清除更改
 #### 7. 删除远程文件
 	git rm -r --cached .idea/
+#### 8. 清除本地更改，强制更新
+	
+	git fetch --all
+	git reset --hard origin/master
 
 
