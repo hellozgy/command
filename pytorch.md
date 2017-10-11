@@ -40,7 +40,7 @@ title: pytorch常用命令
 #### 7. 设置每行不同列的值为特定值
 	batch_size = 4
 	dim = 7
-	idx = torch.LongTensor([[0,1],[2,3],[0,4],[0,5]])
+	idx = torch.LongTensor([[0,1],[2,3],[0,4],[0,5, 3]])
 	hot_vec = hot_v = torch.zeros(batch_size, dim)
 	hot_vec.scatter_(1, idx, 1.0)
 result
@@ -49,6 +49,12 @@ result
     0     0     1     1     0     0     0
     1     0     0     0     1     0     0
     1     0     0     0     0     1     0
+
+#### 8. masked_fill
+	a=torch.LongTensor([[1,2,0],[2,0,9]]) # 假设0是pad
+	mask = a.eq(0)
+	mask = mask.float().masked_fill_(mask, float('-inf'))
+![](https://i.imgur.com/9soKk3u.png)
 
 
 
