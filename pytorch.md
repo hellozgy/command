@@ -56,5 +56,8 @@ result
 	mask = mask.float().masked_fill_(mask, float('-inf'))
 ![](https://i.imgur.com/9soKk3u.png)
 
+#### 9. 将Nan设为0,但是貌似不能bp
+	b[b!=b]=0
+
 
 
