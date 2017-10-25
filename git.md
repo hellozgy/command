@@ -47,4 +47,8 @@ title: git常用命令
 	git fetch --all
 	git reset --hard origin/master
 
+#### 9. 修改远程库地址
+	
+	git remote set-url origin git@gitlab.com:hellozgy/nmt2.git
+
 
