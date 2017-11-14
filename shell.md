@@ -7,3 +7,6 @@ title: Shell 常用命令
 
 <!--more-->
 
+#### 2. 清理显存
+	fuser -v /dev/nvidia*
+
