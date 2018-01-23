@@ -70,3 +70,10 @@ python test.py -v 0.3 --feature
 	import random
 	# 0-99之间随机取10个随机数
 	random.sample(range(100), 10)
+
+#### 11. 格式化字符串
+	‘{:,.2f}’.format('12.9877') # 保留两位小数
+	'{:>4}'.format('12') # ^、<、>分别是居中、左对齐、右对齐，后面带宽度
+#### 12. 格式化时间
+	import datetime
+	print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))

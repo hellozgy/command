@@ -43,15 +43,11 @@ title: git常用命令
 #### 7. 删除远程文件
 	git rm -r --cached .idea/
 #### 8. 清除本地更改，强制更新
-	
 	git fetch --all
 	git reset --hard origin/master
-<<<<<<< HEAD
-=======
 
 #### 9. 修改远程库地址
-	
 	git remote set-url origin git@gitlab.com:hellozgy/nmt2.git
->>>>>>> b1295ad40da136f0384d2a1f55362c0be2f5ce2f
+
 
 
