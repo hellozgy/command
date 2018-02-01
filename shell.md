@@ -9,4 +9,6 @@ title: Shell 常用命令
 
 #### 2. 清理显存
 	fuser -v /dev/nvidia*
+#### 3. scp
+	scp -P 服务器端口 本机文件 服务器用户名@服务器ip:服务器文件夹
 
