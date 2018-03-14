@@ -49,6 +49,7 @@ python test.py -v 0.3 --feature
 #### 6. 排序
 	a=[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10),]  
 	sorted(a, key=lambda k:len(k[0]), reverse=True)
+	sorted(a, key=lambda k:(k[0], k[1])) # 多个属性排序
 
 #### 7. map函数
 	参数：map(func, *iterables)
@@ -70,6 +71,9 @@ python test.py -v 0.3 --feature
 	import random
 	# 0-99之间随机取10个随机数
 	random.sample(range(100), 10)
+	random.randint(0, 100) #生成0-100之间的一个整数
+	data = range(100)
+	random.shuffle(data) #打乱 return None
 
 #### 11. 格式化字符串
 	‘{:,.2f}’.format('12.9877') # 保留两位小数
