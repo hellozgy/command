@@ -168,7 +168,7 @@ Labels used in softmax_cross_entropy_with_logits are the one hot version of labe
  注：稀疏矩阵，比如indice=[[0,1],[1,2]],values=[10,32],
 意思就是，2*3矩阵[[0,10,0],[0,0,32]]，默认将稀疏部分补0.
 #### 11. tensorflow实现双向双层RNN
-# 双层双向RNN
+		双层双向RNN
         fw_cell = bn_rnn.BNGRUCell(self.config.n_hidden, self.training_placeholder)
         bw_cell = bn_rnn.BNGRUCell(self.config.n_hidden, self.training_placeholder)
         fw_cell = tf.nn.rnn_cell.DropoutWrapper(cell=fw_cell, output_keep_prob=self.drop_out_placeholder)
