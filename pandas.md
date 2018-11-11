@@ -34,4 +34,8 @@ title: pandas实用命令
 
 #### 9. 选择
 	df=df[df['A']==1]
+#### 10. 遍历
+	for index, row in data.iterrows():   # 获取每行的index、row
+        for col_name in data.columns:
+            print(row[col_name])
 	
