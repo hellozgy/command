@@ -48,6 +48,8 @@ title: git常用命令
 
 #### 9. 修改远程库地址
 	git remote set-url origin git@gitlab.com:hellozgy/nmt2.git
+#### 10.设置git显示中文
+	git config --global core.quotepath false
 
 
 

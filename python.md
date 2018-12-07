@@ -79,3 +79,5 @@ python test.py -v 0.3 --feature
 #### 12. 格式化时间
 	import datetime
 	print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+	# 在当前时间加13小时（可以负数），也可以把hours换成days、minutes
+	(datetime.datetime.now()+datetime.timedelta(hours=13)).strftime('%Y-%m-%d %H:%M:%S') 
