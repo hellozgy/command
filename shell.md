@@ -11,6 +11,8 @@ title: Shell 常用命令
 	fuser -v /dev/nvidia*
 #### 4. scp
 	scp -P 服务器端口 本机文件 服务器用户名@服务器ip:服务器文件夹
+#### 5. 连接远程jupyter
+	ssh -L 本地端口:localhost:jupyter端口 用户名@远程ip -p 服务器开放端口 
 
 
 
