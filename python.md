@@ -64,6 +64,7 @@ python test.py -v 0.3 --feature
 	import re
 	# 替换字符串:
 	re.sub('.*java', '', 'jfdlsjavafesd') # 返回fesd
+	re.search(r'(\d+(\.\d*)?)\s*元', '9e12.43元').groups()[0] # 返回12.43
 
 #### 10. 随机数
 	import random
